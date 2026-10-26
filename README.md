@@ -49,3 +49,6 @@
 
 ### Note: 
 If you made a mistake, it's no big deal and this is the beauty with Docker. You can simply start over. So, if things are not going well, simply remove the container by typing `docker rm -f juice-shop` into the command prompt or terminal. This will remove the container and you can start over from the beginning.
+
+#### Step 4
+- If you have not already cloned this repository to your local machine, you should do it now.
