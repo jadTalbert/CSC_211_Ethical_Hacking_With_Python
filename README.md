@@ -13,7 +13,7 @@
     `docker pull bkimminich/juice-shop:latest`. Wait for the image to completely download before moving to the next step.
 - Start the juice-shop Docker image by typing the following into your command prompt or terminal.
     `docker run -d --name juice-shop -p 8080:3000 bkimminich/juice-shop`
-- Confirma the juice-shop Docker image is up-and-running by typing in the following:
+- Confirm the juice-shop Docker image is up-and-running by typing in the following:
     `docker ps`. You should see something like this:
 
 
@@ -48,4 +48,4 @@
 - If the web site loads, you have successfully installed the application for docker. If it is not running, then you should go back and review these instructions more closely and try it again.
 
 ### Note: 
-If you made a mistake, it's not big deal and this is the beauty with Docker. You can simply start over. So, if things are not going well, simply remove the container by typing `docker rm -f juice-shop` into the command prompt or terminal. This will remove the container and you can start over from the beginning.
+If you made a mistake, it's no big deal and this is the beauty with Docker. You can simply start over. So, if things are not going well, simply remove the container by typing `docker rm -f juice-shop` into the command prompt or terminal. This will remove the container and you can start over from the beginning.
