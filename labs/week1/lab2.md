@@ -43,7 +43,7 @@ You should review the output from the command and either confirm or reject their
 
 ---
 
-### Confirmation Your Findings
+### Confirmation of Your Findings
 
 To confirm your findings, go to `http://localhost:3000` and login using the administrator credentials. If this works, your findings are confirmed!
 
