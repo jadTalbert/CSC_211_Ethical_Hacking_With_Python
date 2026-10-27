@@ -21,10 +21,16 @@
 
 ### Step 4: Download Docker Desktop
    ##### Note: (This works for Mac OS,Linux and Windows)
+- <strong style="color:green">Note: </strong> Docker Desktop is a one-click-install application for Mac, Windows, and Linux that lets you build, share, and run containerized applications and microservices using a visual graphical user interface (GUI)
 
 - [Download Docker Desktop](https://www.docker.com/products/docker-desktop/) - This is free! You Do <strong style="color:red">NOT</strong> pay for any products in this course.
 - Install Docker Desktop on your local machine. Note, this may take a while depending on your specific device.
-- After installation, make sure Docker Desktop is running.
+- After installation, make sure Docker Desktop is running by opening a command prompt or terminal and typing in the following command:
+```docker ps```. You should see something like this:
+
+    ```docker ps
+        CONTAINER ID   IMAGE                            COMMAND                  CREATED        STATUS        PORTS                                         NAMES
+    ```
 
 
 ### Step 5:
@@ -42,7 +48,7 @@
 
 - Next, in the command prompt or terminal, type in the following `docker debug juice-shop`. This is the interactive debugger, which allows us to gain access the Docker image file system. This make take a few minutes as the image downloads--just wait it to complete when done, you will see something like this:
 
-    `docker debug juice-shop
+    ```docker debug juice-shop
 
         Builtin commands:
         - install [tool1] [tool2] ...    Add Nix packages from: https://search.nixos.org/packages
@@ -59,7 +65,7 @@
         - The /nix directory is invisible to the actual container.
                                                                                                                                                                         Version: 0.0.47
         root@a2c2e4012461 /juice-shop [juice-shop]
-    docker >`
+    docker >```
 
     
 ### Step 6:
@@ -70,7 +76,16 @@
 If you made a mistake, it's no big deal and this is the beauty with Docker. You can simply start over. So, if things are not going well, simply remove the container by typing `docker rm -f juice-shop` into the command prompt or terminal. This will remove the container and you can start over from the beginning.
 
 ### Step 7
-- If you have not already cloned this repository to your local machine, you should do it now using VS Code. 
+- If you have not already cloned this repository to your local machine, you should do it now using VS Code.
+
+### How To submit this lab
+- You should record a 1-2 minute video showing me that you can execute the following commands with working docker containers
+    - using Windows command line or Mac OS Terminal execute `docker ps`
+    - launch VS Code and show me that it is installed
+    - using VS Code, open the terminal and execute `python3 --version`
+    - using VS Code, open the terminal and execute `git version`
+    
+
 
 
 
