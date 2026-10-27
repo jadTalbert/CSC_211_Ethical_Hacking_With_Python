@@ -1,4 +1,4 @@
-# Week 1 Lab: Set up & Configuration
+# Week 1 Lab 1: Set up & Configuration
 
 ### Step 1: Installing Python3 & VS Code
 - [Download & Install Python](https://www.python.org/downloads/) (Windows, Linux & Mac OS)
