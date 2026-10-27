@@ -2,17 +2,17 @@
 
 ### Course Setup & Configuration
 
-#### Step 1:(This works for Mac OS and Windows)
-- [Download Docker Desktop](https://www.docker.com/products/docker-desktop/) - This is free! You Do NOT pay for any products in this course.
+#### Step 1: (This works for Mac OS and Windows)
+- [Download Docker Desktop](https://www.docker.com/products/docker-desktop/) - This is free! You Do <strong style="color:red">NOT</strong> pay for any products in this course.
 - Install Docker Desktop on your local machine. Note, this may take a while depending on your specific device.
-- After installation, make sure Docker Desktop is running by following `Step 2` below.
+- After installation, make sure Docker Desktop is running.
 
-
+<!--
 #### Step 2:
 - Pull the juice-shop docker image by opening a command prompt(Windows) or Terminal(Mac OS) and typing in the following:
-    `docker pull bkimminich/juice-shop:latest`. Wait for the image to completely download before moving to the next step.
+    `docker pull bkimminich/juice-shop:snapshot`. Wait for the image to completely download before moving to the next step.
 - Start the juice-shop Docker image by typing the following into your command prompt or terminal.
-    `docker run -d --name juice-shop -p 8080:3000 bkimminich/juice-shop`
+    `docker run -d --name juice-shop -p 8080:3000 bkimminich/juice-shop:snapshot`
 - Confirm the juice-shop Docker image is up-and-running by typing in the following:
     `docker ps`. You should see something like this:
 
@@ -52,3 +52,5 @@ If you made a mistake, it's no big deal and this is the beauty with Docker. You 
 
 #### Step 4
 - If you have not already cloned this repository to your local machine, you should do it now.
+
+-->
