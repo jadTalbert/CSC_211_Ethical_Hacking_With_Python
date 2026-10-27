@@ -33,7 +33,7 @@ They ask you to execute the following command using `docker debug`
 
 `vi data/static/users.yml`
 
-You should either confirm or reject their findings in your report and provide the following information for the `admin` user:
+You review the output from the command and you should either confirm or reject their findings in your report and provide the following information for the `admin` user from the `users.yml` file:
 
     - email
     - password
