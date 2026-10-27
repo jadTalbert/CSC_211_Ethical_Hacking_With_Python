@@ -95,6 +95,6 @@ All critical and high-severity risks directly compromising authentication integr
 - record a 2-3 minute video showing and explaining in your own words the following:
     - open the users.yml file `vi data/static/users.yml`
     - show me how you identified the admin information for this vulnerability(e.g. username, password, credit card etc.) in the users.yml file.
-    - launch the juice-shop website on your machine and enter the admin username(email) and password and login.
+    - show me how you launch the juice-shop website on your machine and enter the admin username(email) and password to login.
     - upload your detailed remediation overview to Canvas
 
