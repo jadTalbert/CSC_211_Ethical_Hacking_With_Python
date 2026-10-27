@@ -65,7 +65,8 @@
         - The /nix directory is invisible to the actual container.
                                                                                                                                                                         Version: 0.0.47
         root@a2c2e4012461 /juice-shop [juice-shop]
-    docker >```
+    docker >
+    ```
 
     
 ### Step 6:
