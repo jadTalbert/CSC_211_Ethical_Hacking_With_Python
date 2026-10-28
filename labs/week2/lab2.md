@@ -80,6 +80,6 @@ What did you find? Who are you now logged in "as"?
 You should document your findings a second time for Ralph in your vulnerability report and provide details on your findings for them to fix. You should also consider how to provide this feedback to the CSO. Do you call a meeting and blame Ralph? Do you tell only Ralph or do you provide written documentation and communicate this to both Ralph and the CSO in a diplomatic fashion? At this point, no matter what you say-or-do, Ralph's reputation is on the line, so do you help him even though his behavior is likely going to continue?
 
 ### How To Submit This Lab:
-- Write a 100-word synopsis of how you would handle relaying your findings to the CSO, while considering Ralph's reputation. Upload this to Canvas.
+- Write a 100-word synopsis of how you would handle relaying your findings to the CSO, while considering Ralph's reputation. Upload this to Canvas. You may use Generative AI to assist you;however, this must be your work, not full-on AI.
 - Record a 1-2 minute video showing me you were able to successfully exploit the SQL Injection using the web site.
 
