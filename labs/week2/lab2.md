@@ -3,9 +3,9 @@
 #### [NICE Framework Reference](https://github.com/jadTalbert/NICE_Framework/)
 
 - Role: [JRT-1](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/roles/roles.md)
-- Tasks: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/tasks/tasks.md)
-- Skills: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/skills/skills.md)
-- Knowledge: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
+- Tasks: [T1118,T1119,T1619,T1079,T1279,T1341](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/tasks/tasks.md)
+- Skills: [S0492,S0543,,S0544,S0578,S0656,S0686,S0804](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/skills/skills.md)
+- Knowledge: [K0677,K0682,K0682,K0683,K0684,K0685,K0688,K0742,K0751,K0752,K0797,K0832,K0882,K1079,K1182](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
 
 
 
@@ -79,4 +79,6 @@ What did you find? Who are you now logged in "as"?
 
 You should document your findings a second time for Ralph in your vulnerability report and provide details on your findings for them to fix. You should also consider how to provide this feedback to the CSO. Do you call a meeting and blame Ralph? Do you tell only Ralph or do you provide written documentation and communicate this to both Ralph and the CSO in a diplomatic fashion? At this point, no matter what you say-or-do, Ralph's reputation is on the line, so do you help him even though his behavior is likely going to continue?
 
-###
+### How To Submit This Lab:
+- Write a 100-word synopsis of how you would handle relaying your findings to the CSO, while considering Raplh's reputation. Upload this to Canvas.
+- Record a 1-2 minute video showing me you were able to successfully exploit the SQL Injection using the web site.

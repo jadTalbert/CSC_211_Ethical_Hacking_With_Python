@@ -1,7 +1,14 @@
 # Week 1 Lab 1: Set up & Configuration
 
+#### [NICE Framework Reference](https://github.com/jadTalbert/NICE_Framework/)
+
+- Role: [JRT-1](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/roles/roles.md)
+- Tasks: [T-04,T-02](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/tasks/tasks.md)
+- Skills: [S-02,S0532](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/skills/skills.md)
+- Knowledge: [K-02](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
+
 ### Step 1: Installing Python3 & VS Code
-- [Download & Install Python](https://www.python.org/downloads/) (Windows, Linux & Mac OS)
+- [Download & Install Python](https://ww.python.org/downloads/) (Windows, Linux & Mac OS)
 
 - [Download & Install VS Code](https://code.visualstudio.com/download) (Windows, Linux & Mac OS)
 

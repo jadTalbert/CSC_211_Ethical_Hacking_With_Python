@@ -3,9 +3,9 @@
 #### [NICE Framework Reference](https://github.com/jadTalbert/NICE_Framework/)
 
 - Role: [JRT-1](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/roles/roles.md)
-- Tasks: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/tasks/tasks.md)
-- Skills: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/skills/skills.md)
-- Knowledge: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
+- Tasks: [T1079,T1619,T1119,T1070](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/tasks/tasks.md)
+- Skills: [S0543,S0544,S0578,S0597,S0656,S0686,S0804](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/skills/skills.md)
+- Knowledge: [K1079,K0677,K0679,K0682,K0684,K0688,K0710,K0751,K0752,K0779,K0882,K1182](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
 
 ---
 

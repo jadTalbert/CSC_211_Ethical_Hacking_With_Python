@@ -3,9 +3,9 @@
 #### [NICE Framework Reference](https://github.com/jadTalbert/NICE_Framework/)
 
 - Role: [JRT-1](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/roles/roles.md)
-- Tasks: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/tasks/tasks.md)
-- Skills: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/skills/skills.md)
-- Knowledge: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
+- Tasks: [T-03,T-06,T-09,T-11,T-12,T-13,T-14,T-1020,T1079,T1118,T1119,T1229,T1279,T1341,T1619](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/tasks/tasks.md)
+- Skills: [S-05,S-06,S-11,S-13,S-17,S0483,S0492,S0543,S0544,S0642,S0656,S0686,S0804](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/skills/skills.md)
+- Knowledge: [K-03,K-05,K-11,K-12,K-13,K-15,K0675,K0677,K0680,K0682,K0683,K0684,K0686,K0688,K0730,K0751,K0832,K1079,K1182](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
 
 ### Overview & Objectives:(Security & Python Scripting)
 Apply your understanding of a White-Hat actor, RoE(Rules of Engagement) and reconnaissance(OSINT) using your already established Python skills from your CIS-115 course at Sandhills Community College.
