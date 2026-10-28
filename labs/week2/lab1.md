@@ -9,7 +9,7 @@
 
 ---
 
-### Overview & Objectives:
+### Overview & Objectives(Security & Client-Side Injection):
 Apply your understanding of a White-Hat actor, RoE(Rules of Engagement) and reconnaissance(OSINT) from the lecture materials.
 
 ACME Corp. was so impressed with your previous engagement and teamwork, they have renewed their security contract and asked that you return for this next effort---partnered with the same team as before. Your colleagues have been working diligently on a concern that was brought up by the lead Software Architect. He claims that the password strength of their Juice-Shop application is weak and will lead to potential bad actors using brute-force attacks to gain access to user accounts and data. This is the only problem he thinks the web site is vulnerable to and doesn't want you to review any other aspects of their implementation.
