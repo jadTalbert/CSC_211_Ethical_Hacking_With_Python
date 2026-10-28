@@ -64,7 +64,10 @@ You must figure out how to stop the log entries quickly to avoid any further imp
 HINT: Keep watching the logs while you investigate. This will help let you know when the log entries stop occurring.
 
 
-
+#### How To Submit This Lab:
+- record a 3-5 minute video showing me the search vulnerability and how you solved the log entry problem that Ralph was so very concerned with.
+- upload the video to Canvas.
+- upload your vulnerability report to Canvas(e.g. same format as your week 1 assignments)
 
 
 

@@ -23,3 +23,5 @@ install sqlite
 
 run this in docker
 sqlite3 /juice-shop/data/juiceshop.sqlite "SELECT id, email, password FROM Users;"
+
+use https://crackstation.net/ to send MD5 passwords
