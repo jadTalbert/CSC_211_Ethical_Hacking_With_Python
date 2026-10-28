@@ -53,9 +53,9 @@ else:
 ```
 
 
-After successfully implementing the python program above, you should take a close look at the code and see if this exploit looks familiar---you already did this in an earlier lab. So, what's different with the SQL Injection vs. the one you testing directly on the web site(e.g. manually)?
+After successfully implementing the python program above, you should take a close look at the code and see if this exploit looks familiar---you already did this in an earlier lab. So, what's different with the SQL Injection vs. the vulnerability you tested directly on the web site using `' OR 1=1--`?
 
 ### How To Submit This Lab:
 - Upload your python program to Canvas
-- Record a 2-3 minute video showing me that you understand how the python code works and what the exploit actually does. Feel free to compare it to the manual SQL Injection exploit if is helps, but you must show the program working.
+- Record a 2-3 minute video showing me that you understand how the python code works and what the exploit actually does. You should execute the program and show the results in your video! Feel free to compare it to the manual SQL Injection exploit if is helps, but you must show the program working.
 

@@ -82,3 +82,4 @@ You should document your findings a second time for Ralph in your vulnerability 
 ### How To Submit This Lab:
 - Write a 100-word synopsis of how you would handle relaying your findings to the CSO, while considering Raplh's reputation. Upload this to Canvas.
 - Record a 1-2 minute video showing me you were able to successfully exploit the SQL Injection using the web site.
+
