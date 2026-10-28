@@ -59,3 +59,6 @@ After successfully implementing the python program above, you should take a clos
 - Upload your python program to Canvas
 - Record a 2-3 minute video showing me that you understand how the python code works and what the exploit actually does. You should execute the program and show the results in your video! Feel free to compare it to the manual SQL Injection exploit if is helps, but you must show the program working.
 
+### Juice-Shop Docker Container
+At this point, we are done with the juice-shop docker container, so if you are satisfied with all of the labs for this week,you may execute the following command to stop the container `docker stop juice-shop`. The container is still there, so if you ever need to start it up again, you can execute `docker start juice-shop` and it will be active again.
+
