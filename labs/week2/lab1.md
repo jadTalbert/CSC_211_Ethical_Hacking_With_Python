@@ -51,13 +51,15 @@ You launch your command line or terminal using `docker debug juice-shop` and typ
 #### NOTE: (you should use today's date in your log file name)
 ```tail -f logs/access.log.2026-10-28```
 
-You see entries that Ralph is referring to and ask him---is this what you are seeing in the logs?
+<strong>Hint:</strong> you can see all log files by using the following command: `ls -l logs`
+
+You see entries in the log file that Ralph is referring to and ask him---`is this what you are seeing in the logs?`
 
 ```
 ::ffff:192.168.65.1 - - [28/Oct/2026:03:32:05 +0000] "GET /process.php/socket.io/?EIO=4&transport=polling&t=k62zv7mo HTTP/1.1" 200 - "http://localhost:3000/process.php" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
 ```
 
-Ralph confirms---YES! Make it stop now, you're wreaking havoc on our site and affecting our customers!!
+Ralph confirms---<strong style="color:red;">YES! Make it stop now, you're wreaking havoc on our site and affecting our customers!!</strong>
 
 You must figure out how to stop the log entries quickly to avoid any further impact to the web site.
 
