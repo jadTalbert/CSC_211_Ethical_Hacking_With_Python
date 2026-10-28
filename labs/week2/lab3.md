@@ -19,7 +19,7 @@ There is a concept in Software Engineering known as DRY. This acronym is importa
 
 A colleague on your team---another White-Hat hacker tells you that she is not comfortable with programming in python, but heard that you were the SME(Subject Matter Expert) on the team. She tells you that she used ChatGPT to generate some code, but is not quite sure how to get it across the finish line to completion and asks that you take a look and see if you can get it work. She left commented instructions in the code for you in hopes that it would be helpful.
 
-You should check to make sure docker is running on your local machine using the following command `docker ps`. After you confirm docker is running make sure the [Juice-Shop](http://localhost:8080) web site is also working. Then, launch VS Code on your local machine(not in docker!) and copy/paste the python code below and save the file. Use VS Code to address any problems in the code and then exeute the python program `python3 <yourProgramName.py Goes Here>`.
+You should check to make sure docker is running on your local machine using the following command `docker ps`. After you confirm docker is running make sure the [Juice-Shop](http://localhost:8080) web site is also working. Then, launch VS Code on your local machine(not in docker!) and copy/paste the python code below and save the file. Use VS Code to address any problems in the code and then exeute the python program using the following command in VS Code: `python3 <your Python Program Name Goes Here>`.
 
 ```python
 #imports the request library to send HTTP requests
