@@ -10,21 +10,24 @@ $TTL 300
 
 ; Name Servers
 @       IN      NS      ns1.acme-corp.com.
-ns1     IN      A       172.28.0.2
+ns1     IN      A       172.29.0.2
 
 ; Mail Exchange
 @       IN      MX 10   mail.acme-corp.com.
-mail    IN      A       172.28.0.20
+mail    IN      A       172.29.0.20
 
 ; Web & Infrastructure A Records
-@       IN      A       172.28.0.10
-www     IN      A       172.28.0.10
-vpn     IN      A       172.28.0.15
+@       IN      A       172.29.0.10
+www     IN      A       172.29.0.10
+ftp     IN      A       172.29.0.22
+*       IN      A       172.29.0.99
 
 ; High-Value Target / Staging Records (Intentional Lab Findings)
-dev-api IN      A       172.28.0.101
-stage   IN      A       172.28.0.102
-corp-db IN      A       172.28.0.200
+dev-api IN      A       172.29.0.101
+stage   IN      A       172.29.0.102
+corp-db IN      A       172.29.0.200
+vpn     IN      A       172.29.0.16
+dev     IN      A       172.29.0.100
 
 ; TXT Records (Information Leakage finding)
-@       IN      TXT     "v=spf1 ip4:172.28.0.0/16 include:_spf.salesforce.com ~all"
+@       IN      TXT     "v=spf1 ip4:172.29.0.0/16 include:_spf.salesforce.com ~all"
