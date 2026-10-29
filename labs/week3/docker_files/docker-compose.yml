@@ -1,0 +1,35 @@
+networks:
+  recon-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.29.0.0/16
+
+services:
+  mock-dns:
+    image: coredns/coredns:latest
+    container_name: acme-dns
+    networks:
+      recon-net:
+        ipv4_address: 172.29.0.2
+    volumes:
+      - ./coredns/Corefile:/etc/coredns/Corefile
+      - ./coredns/zones:/zones
+    ports:
+      - "1053:53/udp" 
+      - "1053:53/tcp"
+    command: -conf /etc/coredns/Corefile
+
+  attacker:
+    image: python:3.11-slim
+    container_name: student-recon
+    networks:
+      - recon-net
+    dns:
+      - 172.29.0.2
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: sh -c "pip install --no-cache-dir dnspython requests && tail -f /dev/null"
+    stdin_open: true
+    tty: true
