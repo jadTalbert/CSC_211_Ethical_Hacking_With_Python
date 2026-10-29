@@ -18,7 +18,7 @@
 ### Context
 ACME Corporation has contracted your red team to evaluate their internet-facing exposure prior to an upcoming major platform release. Company leadership is concerned that forgotten staging/testing servers, misconfigured DNS zone settings, and administrative test endpoints are readily discoverable by external adversaries.
 
-
+docker compose up -d
 ssh into container: docker compose exec -it attacker /bin/bash
 or
 docker debug
