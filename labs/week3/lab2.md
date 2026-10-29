@@ -3,7 +3,7 @@
 **Course:** CSC-211 (Ethical Hacking with Python)  
 **Target Entity:** ACME Corporation (`acme-corp.com` / sandbox target)  
 **Engagement Type:** Red Team Operations (Phase 2: Active Scanning Direct Network Probing)  
-**Deliverables:** Functional Python Script (`active_scanning.py`), Executive Summary, and Vulnerability Assessment Report  
+**Deliverables:** Functional Python Script (`sweep.py`), Executive Summary, and Vulnerability Assessment Report  
 
 ---
 
@@ -12,7 +12,7 @@
 - Role: [JRT-1](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/roles/roles.md)
 - Tasks: [T-03,T-04,T-06,T-07,T-09,T-10,T-11,T-13,T-14,T-16,T1070,T1341,T1619](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/tasks/tasks.md)
 - Skills: [S-02,S-03,S-05,S-06,S-10,S-13,S-17,S-19,S0532,S0543,S0572,S0597,S0688](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/skills/skills.md)
-- Knowledge: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
+- Knowledge: [K-02,K-03,K-05,K-08,K-10,K0674,K0680,K0682,K0683,K0797,K0813,K0833,K0882,K0924,](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
 
 ---
 ### Context
