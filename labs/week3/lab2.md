@@ -16,7 +16,7 @@
 
 ---
 ### Context
-ACME Corporation was extremely pleased with you DNS assessment! They have decided to put Ralph on another team and have asked that your team lead the next round of vulnerability testing.
+ACME Corporation was extremely pleased with your DNS assessment! They have decided to put Ralph on another team and have asked that your team lead the next round of vulnerability testing.
 
 The CSO(Chief Security Officer) and CTO(Chief Technology Officer) are both concerned with the network posture of the company and want to do more active scanning to expose any potential risks within and around their network.
 
@@ -58,7 +58,7 @@ pip install --no-cache-dir dnspython requests scapy
 ### Python Active Reconnaissance Scripts
 After successfully installing the network utilities from the script above, you realize that you cannot figure out how to execute a python program from VS Code running on your local machine that will communicate with the docker container you are testing. 
 
-So again, you go into research mode trying to figure this out and realize why you chose VS Code above all other IDEs---because it has great extensions that can do almost anything! So, you leap into action and install the `Dev Containers` VS Code extension.
+So again, you go into research mode trying to figure this out and realize why you chose VS Code above all other IDEs---because it has great extensions and can do almost anything with them! So, you leap into action and install the `Dev Containers` VS Code extension.
 
 After installing the `Docker Containers` extension, you finally find out how to use it by clicking the button with the two < > in the bottom left-hand side of VS Code.
 
@@ -66,7 +66,7 @@ After installing the `Docker Containers` extension, you finally find out how to 
 
 ![launch docker container extension](./images/docker_container_extension.jpg)
 
-Then you ask yourself....`wtf...which one do I choose?`. Fortunately, a Solution Architect on another teams swings by your office to chat, and he can immedidately see you are stuggling and after explaining to him your situation, he says `pfft...that's easy dude, choose the running container that you are currently using, which should be the student-recon container.`.
+Then you ask yourself....`wtf...which one do I choose?`. Fortunately, a Solution Architect on another team swings by your office to chat, and he can immedidately see you are stuggling and after explaining to him your situation, he says `pfft...that's easy dude, choose the running container that you are currently using, which should be the student-recon container.`.
 
 <strong>Hint:</strong> See image below to choose the running container:
 
