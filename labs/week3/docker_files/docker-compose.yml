@@ -24,7 +24,8 @@ services:
     image: python:3.11-slim
     container_name: student-recon
     networks:
-      - recon-net
+      recon-net:
+       ipv4_address: 172.29.0.50
     dns:
       - 172.29.0.2
     volumes:
@@ -33,3 +34,16 @@ services:
     command: sh -c "pip install --no-cache-dir dnspython requests && tail -f /dev/null"
     stdin_open: true
     tty: true
+
+  metasploitable:
+    image: ubuntu:22.04
+    container_name: victim-server
+    networks:
+      recon-net:
+        ipv4_address: 172.29.0.102
+    dns:
+      - 172.29.0.3
+    ports:
+      - "8080:80"
+      - "1443:443"
+      - "2122:22"
