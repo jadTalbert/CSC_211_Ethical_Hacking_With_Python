@@ -35,15 +35,76 @@ services:
     stdin_open: true
     tty: true
 
-  metasploitable:
-    image: ubuntu:22.04
+
+  target-box:
+    image: debian:bookworm-slim
     container_name: victim-server
+    environment:
+      - DEBIAN_FRONTEND=noninteractive
+
+    ports:
+      - "2121:21"
+      - "2222:22"
+      - "2323:23"
+      - "8080:80"
+      - "6379:6379"
+    command:
+      - /bin/bash
+      - -c
+      - |
+        # 1. Update and install packages at runtime
+        apt-get update && apt-get install -y --no-install-recommends \
+            python3 \
+            python3-pip \
+            openssh-server \
+            vsftpd \
+            telnetd \
+            nginx \
+            procps \
+            net-tools \
+            redis-server \
+            ca-certificates
+
+        # 2. Configure SSH (weak credentials)
+        mkdir -p /var/run/sshd
+        useradd -rm -d /home/victim -s /bin/bash -g root -G sudo -u 1000 victim
+        echo 'victim:password123' | chpasswd
+        echo 'root:toor' | chpasswd
+        sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+        # 3. Configure FTP (anonymous access)
+        mkdir -p /var/run/vsftpd/empty /var/ftp
+        echo "Confidential server backup files" > /var/ftp/confidential_backup.txt
+        echo "anonymous_enable=YES" >> /etc/vsftpd.conf
+        echo "anon_root=/var/ftp" >> /etc/vsftpd.conf
+        echo "local_enable=YES" >> /etc/vsftpd.conf
+
+        # 4. Configure Telnet
+        useradd -m -s /bin/bash telnetuser
+        echo 'telnetuser:telnet' | chpasswd
+
+        # 5. Configure HTTP landing page
+        echo '<h1>Corporate Intranet Portal v1.0.4-dev</h1><p>Debug Mode: ACTIVE</p>' > /var/www/html/index.html
+
+        # 6. Start services
+        service ssh start
+        service vsftpd start
+        /usr/sbin/in.telnetd -debug 23 &
+        service nginx start
+
+
+        # Launch Redis as a background daemon
+        redis-server --bind 0.0.0.0 --protected-mode no --daemonize yes
+
+
+        echo "=== Target Server Online & Listening ==="
+
+        
+
+        # 7. Keep the container alive indefinitely
+        sleep infinity
+
     networks:
       recon-net:
-        ipv4_address: 172.29.0.102
-    dns:
-      - 172.29.0.3
-    ports:
-      - "8080:80"
-      - "1443:443"
-      - "2122:22"
+        ipv4_address: 172.29.0.20
+
