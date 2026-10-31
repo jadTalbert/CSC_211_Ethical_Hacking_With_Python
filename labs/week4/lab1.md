@@ -74,6 +74,7 @@ After reviewing the python program below, you take this task on yourself and lau
 
 ![choose running container](./images/docker_container_attach_to_running_container.jpg)
 
+### Banner Grabber Program: banner_grabber.py
 
 ```python
 import socket
@@ -158,6 +159,9 @@ if __name__ == "__main__":
 ```
 
 You quickly find that this is a very complicated python program and you are not exactly sure how it works---although it does work! In order for others to understand this code you pass the program to a colleague and ask them to properly comment the code, so that you can write the vulnerability report for this exercise.
+
+You decide to use Google's Gemini and prompt it to assist you with building your vulnerability report and provide it a copy of the information from your `banner_grabber.py` program output.
+
 
 ### How To Submit This Lab:
 - You should record a 1-2 minute video showing me the output of the python program running in the `victim-banner-server` docker image
