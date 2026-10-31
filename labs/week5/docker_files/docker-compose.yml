@@ -1,0 +1,46 @@
+networks:
+  audit-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.29.0.0/16
+
+services:
+  # Container 1: Student Attack Environment
+  workstation:
+    image: python:3.11-slim-bookworm
+    container_name: student-recon
+    tty: true
+    stdin_open: true
+    command: /bin/bash
+    networks:
+      audit-net:
+        ipv4_address: 172.29.0.100
+
+  # Container 2: Web Target (OWASP Juice Shop)
+  web-target:
+    image: bkimminich/juice-shop:latest
+    container_name: web-server
+    ports:
+      - "3000:3000"
+    networks:
+      audit-net:
+        ipv4_address: 172.29.0.10
+
+  # Container 3: Database & Cache Target (Unauthenticated Redis)
+  cache-target:
+    image: redis:7-alpine
+    container_name: redis-cache-server
+    command: ["redis-server", "--protected-mode", "no"]
+    networks:
+      audit-net:
+        ipv4_address: 172.29.0.20
+
+  # Container 4: Internal Secure Gateway (Legacy SSH Service)
+  gateway-target:
+    platform: linux/amd64
+    image: rastasheep/ubuntu-sshd:18.04
+    container_name: gateway-ssh-server
+    networks:
+      audit-net:
+        ipv4_address: 172.29.0.30
