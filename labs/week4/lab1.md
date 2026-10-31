@@ -20,7 +20,7 @@ Service banners themselves do not execute exploits, but in your ethical hacking 
 
 ```
 
-The CSO has provided some documentation listed below that you should review prior to starting your work.
+The CSO wants you to research CWE-200 and has provided some documentation listed below that you should review prior to starting your work.
 
 #### Unsolicited Protocol Banners (Talkative Daemons)
 Certain protocols are designed so the server transmits an informational greeting banner immediately upon socket connection, before the client sends any data:

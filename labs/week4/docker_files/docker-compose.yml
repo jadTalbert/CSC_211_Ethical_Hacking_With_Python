@@ -35,6 +35,19 @@ services:
     stdin_open: true
     tty: true
 
+  # OWASP Juice Shop Target
+  juice-shop:
+    image: bkimminich/juice-shop:latest
+    container_name: juice-shop2
+    ports:
+      - "3000:3000"
+    networks:
+      recon-net:
+        ipv4_address: 172.29.0.30
+    environment:
+      # Optional: keeps the challenge-solved notifications quiet during scripted testing
+      - NODE_ENV=unsafe
+
   victim-banner-server:
     image: debian:bookworm-slim
     container_name: victim-banner-server
