@@ -1,0 +1,92 @@
+networks:
+  recon-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.29.0.0/16
+
+services:
+  mock-dns:
+    image: coredns/coredns:latest
+    container_name: acme-dns
+    networks:
+      recon-net:
+        ipv4_address: 172.29.0.2
+    volumes:
+      - ./coredns/Corefile:/etc/coredns/Corefile
+      - ./coredns/zones:/zones
+    ports:
+      - "1053:53/udp" 
+      - "1053:53/tcp"
+    command: -conf /etc/coredns/Corefile
+
+  attacker:
+    image: python:3.11-slim
+    container_name: student-recon
+    networks:
+      recon-net:
+       ipv4_address: 172.29.0.50
+    dns:
+      - 172.29.0.2
+    volumes:
+      - .:/app
+    working_dir: /app
+    command: sh -c "pip install --no-cache-dir dnspython requests && tail -f /dev/null"
+    stdin_open: true
+    tty: true
+
+  victim-banner-server:
+    image: debian:bookworm-slim
+    container_name: victim-banner-server
+    environment:
+      - DEBIAN_FRONTEND=noninteractive
+    ports:
+      - "2222:22"
+      - "2323:23"
+      - "8080:80"
+      - "6379:6379"
+    networks:
+      recon-net:
+        ipv4_address: 172.29.0.20
+    command:
+      - /bin/bash
+      - -c
+      - |
+        apt-get update && apt-get install -y --no-install-recommends \
+            openssh-server \
+            vsftpd \
+            telnetd \
+            nginx \
+            python3 \
+            python3-pip \
+            redis-server \
+            procps \
+            net-tools \
+            ca-certificates
+
+        # SSH Setup (Emits OpenSSH banner on connect)
+        mkdir -p /var/run/sshd
+        useradd -rm -d /home/victim -s /bin/bash -g root -G sudo -u 1000 victim
+        echo 'victim:password123' | chpasswd
+        sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+        service ssh start
+
+        # vsftpd Custom Banner Setup
+        mkdir -p /var/run/vsftpd/empty /var/ftp
+        echo "ftpd_banner=Authorized Access Only - Internal Corp FTP Server v2.4.1" >> /etc/vsftpd.conf
+        echo "anonymous_enable=YES" >> /etc/vsftpd.conf
+        service vsftpd start
+
+        # Telnet Setup
+        useradd -m -s /bin/bash telnetuser
+        echo 'telnetuser:telnet' | chpasswd
+        /usr/sbin/in.telnetd -debug 23 &
+
+        # Nginx HTTP Setup (Emits Server: nginx banner in HTTP headers)
+        service nginx start
+
+        # Redis Setup (Daemonized & bound to 0.0.0.0)
+        redis-server --bind 0.0.0.0 --protected-mode no --daemonize yes
+
+        echo "=== All Banner Services Online ==="
+        sleep infinity

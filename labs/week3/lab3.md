@@ -86,4 +86,4 @@ You realize the in order to comment the code, you have to be able to execute it 
 
 ### How To Submit This Lab:
 - Record a 2-3 minute video showing me that you know how to launch the `victim-server` docker container within VS Code and that you can execute the code and show the open ports that were scanned on the server.
-- Upload your `tcp_scanner.py` file with the necessary comments the explain the logic and how the program works. These should be your comments and not comments created through generative AI.
+- Upload your `tcp_scanner.py` file with the necessary comments that explain the logic and how the program works. These should be your comments and not comments created through generative AI.
