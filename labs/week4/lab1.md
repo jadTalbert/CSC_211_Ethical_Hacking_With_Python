@@ -1,4 +1,4 @@
-### Week 3 Lab 3: Assignment: Active Reconnaissance(Direct Network Probing) Continued
+### Week 4 Lab 1: Assignment: Banner Grabbing/Extraction
 
 #### [NICE Framework Reference](https://github.com/jadTalbert/NICE_Framework/)
 
@@ -9,182 +9,158 @@
 
 
 
-### Service Banner Grabber (`scripts/03_banner_grabber.py`)
+### Unsolicited vs. Solicited Banner Extraction
 
-Interrogates an open TCP port by listening for default daemon banners or sending an HTTP probe.
+### Context
+
+The CSO continually brags to the CTO about your teams abilities and how well you are performing the vulnerability assessments for ACME Corp. She knows that there are minor information vulnerabilities in terms of their Linux Operating Systems---specifically information displayed on banners when someone logs into a server. She makes the following statement to your team and wants you to perform another round of scans checking for banners.
+
+```
+Service banners themselves do not execute exploits, but in your ethical hacking efforts and penetration testing, they represent a significant information disclosure vulnerability (specifically categorized under CWE-200: Exposure of Sensitive Information). I need you to scan for banners an provide me the information your find in an report.
+
+```
+
+The CSO has provided some documentation listed below that you should review prior to starting your work.
+
+#### Unsolicited Protocol Banners (Talkative Daemons)
+Certain protocols are designed so the server transmits an informational greeting banner immediately upon socket connection, before the client sends any data:
+
+* **SSH (RFC 4253):** The server immediately responds with its software version exchange string:
+  ```text
+  SSH-2.0-OpenSSH_8.9p1 Ubuntu-3ubuntu0.6
+  ```
+  *Analysis:* This single line reveals the protocol version (`SSH-2.0`), the software build (`OpenSSH 8.9p1`), the base operating system (`Ubuntu`), and the package build revision (`3ubuntu0.6`), which maps to a known upstream Linux kernel version.
+* **FTP (RFC 959):** The server issues a numeric 220 status code:
+  ```text
+  220 (vsFTPd 3.0.3)
+  ```
+* **SMTP (RFC 5321):** Mail Transfer Agents announce their domain identity and server engine:
+  ```text
+  220 mail.internal-bank.com ESMTP Postfix (Ubuntu)
+  ```
+
+
+### Scanning for Banners(banner_grabber.py):
+After your review of the CSO's information, she also mentions to you, that a python consultant was hired by the company and he has significant experience with using python as a tool for scanning ports. He has provided your team with a working version that he thinks will save you some time and effort. He asks that you review the code before executing it, to ensure it is what you need. He's not completely sure that it will work, so you should use the `cd ` command and change your directly to `week 4` in the cloned repository and execute the following command to start the container:
+
+```docker compose --project-directory docker_files/ -f docker_files/docker-compose.yml up -d --force-recreate```
+
+From your past experience with Docker containers, you realize that it's a good idea to use the copy/paste command `Ctrl+C` and `Ctrl+v` respectively to execture the command in the VS Code terminal.
+
+Your experience has also taught you that you need to confirm the docker containers are running properly, so you execute the command below:
+
+```
+docker compose --project-directory docker_files/ -f docker_files/docker-compose.yml up -d --force-recreate
+```
+
+You expect the command to return the following three docker container names in the output:
+
+```bash
+coredns/coredns:latest
+python:3.11-slim 
+debian:bookworm-slim
+```
+
+```bash
+CONTAINER ID   IMAGE                    COMMAND                  CREATED         STATUS         PORTS                                                                                                                                                                    NAMES
+eea31d78ef08   coredns/coredns:latest   "/coredns -conf /etc…"   5 minutes ago   Up 5 minutes   0.0.0.0:1053->53/tcp, 0.0.0.0:1053->53/udp, [::]:1053->53/tcp, [::]:1053->53/udp                                                                                         acme-dns
+8d59521a0bcb   python:3.11-slim         "sh -c 'pip install …"   5 minutes ago   Up 5 minutes                                                                                                                                                                         student-recon
+df1611a3ebef   debian:bookworm-slim     "/bin/bash -c 'apt-g…"   5 minutes ago   Up 5 minutes   0.0.0.0:6379->6379/tcp, [::]:6379->6379/tcp, 0.0.0.0:2222->22/tcp, [::]:2222->22/tcp, 0.0.0.0:2323->23/tcp, [::]:2323->23/tcp, 0.0.0.0:8080->80/tcp, [::]:8080->80/tcp   victim-banner-server
+```
+ 
+After reviewing the python program below, you take this task on yourself and launch the `victim-banner-server` container using your previous knowledge about Docker and VS Code:
+
+![launch docker container extension](./images/docker_container_extension.jpg)
+
+![choose running container](./images/docker_container_attach_to_running_container.jpg)
+
 
 ```python
-#!/usr/bin/env python3
-"""
-03_banner_grabber.py: Service fingerprinting and metadata extraction.
-"""
-
 import socket
 import sys
 
-def grab_raw_banner(ip: str, port: int, timeout: float = 1.5) -> str:
-    """Read initial greeting messages sent by daemons like SSH, FTP, or SMTP."""
+COMMON_PORTS = {
+    21: "FTP",
+    22: "SSH",
+    23: "Telnet",
+    25: "SMTP",
+    53: "DNS",
+    80: "HTTP",
+    443: "HTTPS",
+    1194: "OpenVPN",
+    3000: "Node / Dev Frontend",
+    3306: "MySQL / MariaDB",
+    5432: "PostgreSQL",
+    6379: "Redis",
+    8080: "HTTP-Alt / Dev-API",
+    27017: "MongoDB"
+}
+
+def grab_banner(target_ip: str, port: int, timeout: float = 1.0) -> str:
+    """
+    Connects to an open port and extracts the initial service banner.
+    Sends lightweight probes for protocols that do not transmit on connect.
+    """
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
             s.settimeout(timeout)
-            s.connect((ip, port))
-            banner = s.recv(1024).decode(errors="ignore").strip()
-            return banner
-    except Exception:
-        return ""
+            s.connect((target_ip, port))
 
-def grab_http_banner(ip: str, port: int, timeout: float = 1.5) -> str:
-    """Send an active HTTP probe to extract Server and runtime headers."""
-    try:
-        with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:
-            s.settimeout(timeout)
-            s.connect((ip, port))
-            probe = f"HEAD / HTTP/1.1\r\nHost: {ip}\r\nUser-Agent: LabScanner/1.0\r\n\r\n"
-            s.sendall(probe.encode())
-            response = s.recv(2048).decode(errors="ignore")
-            
-            for line in response.split("\r\n"):
-                if line.lower().startswith("server:"):
-                    return line
-            return response.split("\r\n")[0] if response else ""
-    except Exception:
-        return ""
+            # Protocols that expect a prompt before responding:
+            if port in (80, 8080):
+                s.sendall(b"HEAD / HTTP/1.0\r\n\r\n")
+            elif port == 6379:
+                s.sendall(b"PING\r\n")
 
-def fingerprint_service(ip: str, port: int):
-    # Attempt a raw banner read first
-    banner = grab_raw_banner(ip, port)
-    
-    # If the service does not announce itself, send an active HTTP probe
-    if not banner:
-        banner = grab_http_banner(ip, port)
+            # Receive raw banner bytes
+            raw_data = s.recv(1024)
+            if not raw_data:
+                return "[No Banner Returned]"
+
+            # Clean up whitespace and newlines for single-line display
+            banner = raw_data.decode("utf-8", errors="ignore").strip()
+            # If multi-line (e.g. HTTP headers), keep only the first relevant line
+            first_line = banner.splitlines()[0] if banner else "[Empty Banner]"
+            return first_line[:80]  # Cap width for neat terminal alignment
+
+    except socket.timeout:
+        return "[Banner Timeout]"
+    except Exception as e:
+        return f"[Banner Error: {e}]"
+
+def scan_target(target_ip: str, ports: dict, timeout: float = 0.8):
+    print(f"[*] Scanning Target: {target_ip}")
+    print(f"{'PORT':<8} {'STATE':<8} {'SERVICE':<14} {'SERVICE BANNER'}")
+    print("-" * 75)
+
+    open_ports = []
+    for port, service_hint in ports.items():
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(timeout)
         
-    if banner:
-        print(f"[+] {ip}:{port} -> {banner}")
-    else:
-        print(f"[-] {ip}:{port} -> Port is open, but daemon remained silent.")
-
-if __name__ == "__main__":
-    if len(sys.argv) < 3:
-        print("Usage: python 03_banner_grabber.py <IP> <PORT>")
-        sys.exit(1)
-        
-    target_ip = sys.argv[1]
-    target_port = int(sys.argv[2])
-    fingerprint_service(target_ip, target_port)
-```
-
-### Script 4: Automated DNS-to-Port-Scan Pipeline (`scripts/04_recon_pipeline.py`)
-
-Chains DNS record resolution into automated socket sweeps against discovered endpoints.
-
-```python
-#!/usr/bin/env python3
-"""
-04_recon_pipeline.py: End-to-end pipeline bridging DNS recon to active socket scans.
-"""
-
-import dns.resolver
-import socket
-
-DNS_SERVER = "172.29.0.53"
-DOMAIN = "acme-corp.com"
-TARGET_HOSTS = ["dev-api", "stage", "corp-db", "vpn", "mail", "www", "ns1"]
-PORTS_TO_AUDIT = [21, 22, 25, 53, 80, 443, 1194, 3000, 3306, 8080]
-
-def resolve_host(hostname: str) -> str:
-    resolver = dns.resolver.Resolver()
-    resolver.nameservers = [DNS_SERVER]
-    try:
-        fqdn = f"{hostname}.{DOMAIN}"
-        answers = resolver.resolve(fqdn, "A")
-        return str(answers[0])
-    except Exception:
-        return None
-
-def main():
-    print(f"[*] Querying authoritative DNS server ({DNS_SERVER}) for {DOMAIN} hosts...\n")
-    inventory = {}
-    for host in TARGET_HOSTS:
-        ip = resolve_host(host)
-        if ip:
-            inventory[host] = ip
-            print(f"    [DNS] {host}.{DOMAIN:<20} -> {ip}")
-
-    print("\n[*] Transitioning to active TCP socket discovery...")
-    for host, ip in inventory.items():
-        print(f"\n--- Probing target: {host}.{DOMAIN} ({ip}) ---")
-        open_count = 0
-        for port in PORTS_TO_AUDIT:
-            s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-            s.settimeout(0.3)
-            if s.connect_ex((ip, port)) == 0:
-                print(f"    [!] TCP Port {port} is OPEN")
-                open_count += 1
+        result = s.connect_ex((target_ip, port))
+        if result == 0:
+            s.close()  # Close connection socket before banner grab
+            banner = grab_banner(target_ip, port, timeout=1.0)
+            print(f"{port:<8} {'OPEN':<8} {service_hint:<14} {banner}")
+            open_ports.append((port, service_hint, banner))
+        else:
             s.close()
-        if open_count == 0:
-            print("    [-] No target ports open or host not active.")
+        
+    print("-" * 75)
+    print(f"[*] Scan complete. Found {len(open_ports)} open port(s).")
+    return open_ports
 
 if __name__ == "__main__":
-    main()
+    target = sys.argv[1] if len(sys.argv) > 1 else "172.29.0.20"
+    scan_target(target, COMMON_PORTS)
+
 ```
 
----
+You quickly find that this is a very complicated python program and you are not exactly sure how it works---although it does work! In order for others to understand this code you pass the program to a colleague and ask them to properly comment the code, so that you can write the vulnerability report for this exercise.
 
-## 4. Step-by-Step Lab Execution
-
-### Step 1: Start the Environment
-
-From the host directory:
-
-```bash
-# Build attacker image and launch both containers
-docker compose up -d --build
-
-# Verify container statuses and IP assignments
-docker compose ps
-```
-
-### Step 2: Access the Attacker Container
-
-Open an interactive shell in `student-recon`:
-
-```bash
-docker exec -it student-recon /bin/bash
-```
-
-### Step 3: Run Reconnaissance and Scans
-
-Inside the container:
-
-```bash
-# 1. Host discovery across the Docker subnet
-python /app/01_ping_sweep.py 172.29.0.0/24
-
-# 2. Audit the CoreDNS target directly
-python /app/02_tcp_scanner.py 172.29.0.53
-
-# 3. Banner grab against open services (e.g., DNS port 53)
-python /app/03_banner_grabber.py 172.29.0.53 53
-
-# 4. Run the end-to-end automated pipeline
-python /app/04_recon_pipeline.py
-```
-
-### Step 4: Tear Down
-
-When finished, shut down and remove the lab network from your host:
-
-```bash
-docker compose down
-```
-
-
-
-
-
-
-
-
-
+### How To Submit This Lab:
+- You should record a 1-2 minute video showing me the output of the python program running in the `victim-banner-server` docker image
+- You should complete your assessment report as you have done in weeks past and upload it to Canvas.
 
 
