@@ -4,16 +4,16 @@
 #### [NICE Framework Reference](https://github.com/jadTalbert/NICE_Framework/)
 
 - Role: [JRT-1](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/roles/roles.md)
-- Tasks: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/tasks/tasks.md)
-- Skills: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/skills/skills.md)
-- Knowledge: [](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
+- Tasks: [T-03,T-06,T-07,T-11,T-13,T-15,T-17,T1041,T1118,T1119,T1279,T1619](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/tasks/tasks.md)
+- Skills: [S-02,S-05,S-06,S-12,S0483,S0492,S0543,S0544,S0572,S0578,S0591,S0597,S0656,S0686,S0804](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/skills/skills.md)
+- Knowledge: [K-02,K-05,K-06,K-12,K-15,K-17,K0682,K0683,K0684,K0688,K0730,K0751,K0752,K0797,K0832,K0882,K0924,K0983,K1079,K1087,](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
 
 
 
 ### Context
 With all of the success your team has had with ACME Corp. vulnerability scans, your team has experienced a small growth spurt and with new teammates, comes new ideas and a fresh perspective on security.
 
-ACME Corp. is releasing a new product with QR codes printed directly on the packaging and the CSO has security concerns, because the product labels are created and printed in China. She is concerned that the label could be socially engineered to forward requests to a chinese owned domain before landing on the target domain(e.g. acme-corp.com). She expects you to confirm that her suspcisions are true in-terms of generating QR codes that can lead to bad actors capturing information they are not have access to.
+ACME Corp. is releasing a new product with QR codes printed directly on the packaging and the CSO has security concerns, because the product labels are created and printed in China. She is concerned that the label could be socially engineered to forward requests to a chinese owned domain before landing on the target domain(e.g. acme-corp.com). She expects you to confirm that her suspcisions are true in-terms of generating QR codes that can lead to bad actors capturing information they should not have access to.
 
 
 With lots of new experience and ideas on your team, one colleague has built a well-defined set of Docker containers that will allow you to test this scenario. You ask this colleague to show you how to use the Docker containers and he tells, you that nothing has changed from your previous usage of Docker. So, all you have to do is `cd ` into the `week 6` directory and execute the following commands:
@@ -81,7 +81,7 @@ print("[+] QR Code written to malicious_portal_qr.png")
 
 ```
 
-You should use the VS Code to execute the program above directly from your local maching using the file name `qr_code_generator.py`.
+You should use the VS Code terminal to execute the program above directly from your local maching using the file name `qr_code_generator.py`.
 
 You notice that the program generates a new image file named `malicious_portal_qr.png`, so you open the file in VS Code and use your phone to scan the QR code.
 
