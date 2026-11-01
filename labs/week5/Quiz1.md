@@ -7,7 +7,7 @@ This is your first quiz. It is a hands on test based on key topics that you have
 - You should start the docker containers in the `week 5` directory using the VS Code terminal.
 - You should list the running docker containers using the command line in VS Code.
 - You should launch the `juice-shop` web site on your local machine using the correct port in the URL.
-- You should record a 1-2 minute video showing me that you can accomplish these tasks and upload yoru video to Canvas.
+- You should record a 1-2 minute video showing me that you can accomplish these tasks and upload your video to Canvas.
 
 ### Task 2: Perform a Reconnaissance Mission
 - Write a simple python program that issues an HTTP GET request to the following URL: `http://localhost:3000/rest/admin/application-version` and print the version of the application.

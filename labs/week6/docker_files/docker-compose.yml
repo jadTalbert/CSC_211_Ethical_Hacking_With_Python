@@ -1,0 +1,68 @@
+services:
+  # Vulnerable web application target for student testing
+  target-app:
+    image: bkimminich/juice-shop:v14.5.1
+    container_name: target-app
+    restart: unless-stopped
+    ports:
+      - "3000:3000"
+    networks:
+      csc211-net:
+        ipv4_address: 172.28.0.10
+
+  # Telemetry listener to observe incoming HTTP request headers/metadata
+  telemetry-listener:
+    image: python:3.11-slim
+    container_name: listener
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    networks:
+      csc211-net:
+        ipv4_address: 172.28.0.20
+    command: >
+      sh -c "pip install --no-cache-dir flask && python -c '
+      import json, logging
+      from datetime import datetime
+      from flask import Flask, request
+
+      app = Flask(__name__)
+
+      @app.route(\"/\", methods=[\"GET\"])
+      def log_request():
+          client_ip = request.remote_addr
+          headers = dict(request.headers)
+          params = dict(request.args)
+          print(f\"\\n[!] INCOMING REQUEST FROM: {client_ip}\", flush=True)
+          print(f\"[*] User-Agent: {headers.get(\"User-Agent\", \"N/A\")}\", flush=True)
+          print(f\"[*] Query Parameters: {params}\", flush=True)
+          return \"<h3>Telemetry Server: Request Logged</h3>\", 200
+
+      if __name__ == \"__main__\":
+          app.run(host=\"0.0.0.0\", port=8080)
+      '"
+
+  # Student workspace with Python imaging and networking libraries pre-installed
+  student-workspace:
+    image: python:3.11-slim
+    container_name: workspace
+    stdin_open: true
+    tty: true
+    working_dir: /workspace
+    volumes:
+      - ./workspace:/workspace
+    networks:
+      csc211-net:
+        ipv4_address: 172.28.0.30
+    depends_on:
+      - telemetry-listener
+      - target-app
+    command: >
+      sh -c "pip install --no-cache-dir qrcode[pil] pillow requests && tail -f /dev/null"
+
+networks:
+  csc211-net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
