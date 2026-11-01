@@ -37,6 +37,8 @@ The CSO provides you the following details and reasoning behind this request:
 
 Having already written another QR Code generator, you've got the technical chops to get this one done too, so you quickly bang-out the program and start testing this on your home WiFi network to prove that it works.
 
+Out of curiosity, you tinker with the wifi settings to see if you can build a malicious implementation to show the CSO how problematic QR codes can be.
+
 
 ---
 
@@ -77,7 +79,7 @@ if __name__ == "__main__":
 ```
 
 ### How To Submit This Lab:
-- Record a 1-2 minute video showing me that you got this working. You should use VS Code to show the program compile and execute.
+- Record a 1-2 minute video showing me that you got this working. You should use VS Code to show the program compile and execute. You should show how scanning the QR code works based on the information you provide to the generate_wifi_payload() function.
 - Write up your vulnerability assessment with details to provide to the CSO with any concerns.
 
 
