@@ -1,11 +1,90 @@
-### Lab 7.2: Deploying a Client Fingerprinting & Alerting Listener
+### Week 6 Lab 2: Deploying a Wifi Based QR Code
+
+#### [NICE Framework Reference](https://github.com/jadTalbert/NICE_Framework/)
+
+- Role: [JRT-1](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/roles/roles.md)
+- Tasks: [T-03,T-06,T-07,T-11,T-13,T-15,T-17,T1041,T1118,T1119,T1279,T1619](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/tasks/tasks.md)
+- Skills: [S-02,S-05,S-06,S-12,S0483,S0492,S0543,S0544,S0572,S0578,S0591,S0597,S0656,S0686,S0804](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/skills/skills.md)
+- Knowledge: [K-02,K-05,K-06,K-12,K-15,K-17,K0682,K0683,K0684,K0688,K0730,K0751,K0752,K0797,K0832,K0882,K0924,K0983,K1079,K1087,](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
+
+
+### Context
+With all of your White-Hat hacking experience, You are again working as an offensive security analyst for ACME Corp. with a defined RoE. You will be conducting a physical penetration test and awareness audit for a them because located next to their Corporate Headquarters is a well-known coffee shop with free WiFi.
+
+Employees of ACME Corp. frequently work from the coffee shop, connecting their laptops and smartphones to a sticker on the counter reading:
+
+
+<img src="../week6/images/scan_me.jpeg" alt="scan me" width="159" />
+
+---
+
+The CSO provides you the following details and reasoning behind this request:
+
+```text
+ Instead of typing long SSIDs and passwords, modern mobile devices (iOS and Android) support native Wi-Fi configuration schemas embedded directly into QR codes. When a phone camera scans this format, the operating system bypasses the browser completely and prompts the user. Because users trust their device camera prompts far more than suspicious web links, almost no one inspects what network they are actually joining.
+```
+
+Having already written another QR Code generator, you've got the technical chops to get this one done too, so quickly bang-out the program and start testing this on your home WiFi network to prove that it works.
+
+
+---
+
+```python
+import qrcode
+from qrcode.constants import ERROR_CORRECT_H
+from PIL import Image
+
+
+def generate_wifi_payload(ssid: str, security: str, password: str, output_path: str):
+ 
+    #Encodes Wi-Fi auto-connect schema:
+    #Format: WIFI:S:<SSID>;T:<WPA|WEP|nopass>;P:<PASSWORD>;;
+   
+    payload = f"WIFI:S:{ssid};T:{security};P:{password};;"
+    qr = qrcode.QRCode(
+        version=4,
+        error_correction=ERROR_CORRECT_H,
+        box_size=10,
+        border=4,
+    )
+    qr.add_data(payload)
+    qr.make(fit=True)
+    img = qr.make_image(fill_color="#1a1a1a", back_color="#ffffff")
+    img.save(output_path)
+    print(f"[+] Rogue Wi-Fi QR code saved to: {output_path}")
+
+
+if __name__ == "__main__":
+
+    generate_wifi_payload(
+        ssid="Corporate_Executive_Guest",
+        security="WPA",
+        password="FreePublicInternetAccess!",
+        output_path="rogue_wifi.png"
+    )
+
+```
+
+### How To Submit This Lab:
+- Record a 1-2 minute video showing me that you got this working. You should use VS Code to show the program compile and execute.
+- Write up your vulnerability assessment with details to provide to the CSO with any concerns.
+
+
+
+
+
+
+
+
+
+
+
 
 #### Objective
 Students will create a lightweight Flask-based telemetry server (`quish_tracker.py`) simulating a credential harvester or canary token. When a target scans the QR code, the server captures client metadata (IP address, operating system, device family, user-agent) and immediately fires a terminal alert.
 
 #### Python Implementation: `quish_tracker.py`
 ```python
-#!/usr/bin/env python3
 """
 CSC-211: Lab 7.2 - QR Telemetry & Fingerprinting Listener
 Captures connection headers, identifies client architecture, and logs scans.
@@ -77,6 +156,13 @@ if __name__ == "__main__":
     print("[*] Point generated QR codes to: http://<YOUR_IP>:5000/track/<TOKEN>")
     app.run(host="0.0.0.0", port=5000, debug=False)
 ```
+
+---
+
+
+
+
+
 
 ---
 
