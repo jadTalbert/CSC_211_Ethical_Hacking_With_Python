@@ -20,7 +20,7 @@ Employees of ACME Corp. frequently work from the coffee shop, connecting their l
 
 The CSO provides you the following details and reasoning behind this request:
 
-```text
+```
  Instead of typing long SSIDs and passwords, modern mobile devices (iOS and Android) support native Wi-Fi configuration schemas embedded directly into QR codes. When a phone camera scans this format, the operating system bypasses the browser completely and prompts the user. Because users trust their device camera prompts far more than suspicious web links, almost no one inspects what network they are actually joining.
 ```
 
