@@ -74,5 +74,5 @@ if __name__ == "__main__":
 ```
 
 ### How To Submit This Lab:
-- Record a 2-3 minute video showing me how you fixed the defects in the program, and that the program works properly. Specifically, shoiwng the QR code rotates every 5 seconds.
+- Record a 2-3 minute video showing me how you fixed the defects in the program, and that the program works properly. Specifically, shoiwng that the QR code rotates every 5 seconds.
 - Write up your report to show the CSO this prototype could actually work for her needs. You may use generative AI to assist you with writing the report(note: this is not a vulnerability assessment, but a basic write-up of your findings). Upload your findings to Canvas.
