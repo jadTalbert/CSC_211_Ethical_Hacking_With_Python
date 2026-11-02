@@ -39,5 +39,5 @@ Using the same python program, you should modify it to also search for `ALERT ex
 | ALERT          | 43    | 7-11-2025  |
 
 ### How To Submit This Lab:
-- Record a 2-3 minute video, showing me your working code running the Docker container
+- Record a 2-3 minute video, showing me your working python code running in the Docker container
 - Upload your python program to Canvas.
