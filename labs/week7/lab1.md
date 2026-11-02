@@ -26,18 +26,18 @@ After finding the log file, you should write a python program to read the log fi
 ### Scenario 2:
 Using the same python program, you should modify it to also search for `ALERT exited abnormally with [1]` entries and capture the date and time of the entry.
 
-### Expected Output of python Programs for Scenarios 1 & 2:
+### Example Output of python Programs for Scenarios 1 & 2:
 
 | Failure Type   | Count | Date       |
 | :------------- | :---- | :--------- |
-| auth failures: | 10    | 10-10-2026 |
-| auth failures: | 50    | 9-10-2026  |
-| auth failures: | 3     | 8-10-2026  |
-| auth failures: | 41    | 10-8-2026  |
+| auth failures  | 10    | 10-10-2026 |
+| auth failures  | 50    | 9-10-2026  |
+| auth failures  | 3     | 8-10-2026  |
+| auth failures  | 41    | 10-8-2026  |
 | ALERT          | 90    | 9-10-2025  |
 | ALERT          | 20    | 9-23-2025  |
 | ALERT          | 43    | 7-11-2025  |
 
 ### How To Submit This Lab:
-- Record a 2-3 minute video, showing me your working python code running in the Docker container
-- Upload your python program to Canvas.
+- Record a 2-3 minute video, showing me your working python code running in the Docker container and printing the expected output to the console.
+- Upload your python program to Canvas. Note: I will test this code!!

