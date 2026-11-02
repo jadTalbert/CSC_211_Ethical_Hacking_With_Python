@@ -1,0 +1,21 @@
+services:
+  forensics-lab:
+    image: debian:bookworm-slim
+    container_name: forensics-lab
+    stdin_open: true
+    tty: true
+    command:
+      - /bin/bash
+      - -c
+      - |
+        apt-get update && apt-get install -y \
+        python3 \
+        wget 
+        mkdir -p /var/log/sample_logs 
+        cd /var/log/sample_logs 
+        # Generate sample logs using a Python script
+        wget https://raw.githubusercontent.com/SoftManiaTech/sample_log_files/refs/heads/master/Linux/Linux_2k.log
+
+
+        echo "[+] Lab logs generated at /var/log/sample_logs/access.log"
+        tail -f /dev/null
