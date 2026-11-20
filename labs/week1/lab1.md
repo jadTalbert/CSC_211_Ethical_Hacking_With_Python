@@ -13,7 +13,7 @@
 - [Download & Install VS Code](https://code.visualstudio.com/download) (Windows, Linux & Mac OS)
 
 ### Step 2: Confirm Your Setup
-- Open VS Code and confirm python3 is properly installed on your device. Watch the Instructor's video on how to do this! <<<< VIDEO LINK GOES HERE>>>>
+- Open VS Code and confirm python3 is properly installed on your device.
 
 ### Step 3: Verify Git is Installed
 - Open up a command prompt(Windows) or Terminal(Mac OS & Linux)
