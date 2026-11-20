@@ -20,7 +20,7 @@ Based on previous reconnaissance from one of your colleages, it was found that u
 
 `docker debug juice-shop`
 
-Next, your colleague has an emergency family matter and cannot continue working on the problem. However, they have created a simple script they believe will help you. They ask you to copy/paste the following command at the `docker > ` prompt and continue without them for the time-being.
+As your team begins to work on the problem, one of your colleagues has an emergency family matter and cannot continue working. However, they have created a simple script they believe will help you. They ask you to copy/paste the following command at the `docker > ` prompt and continue without them for the time-being.
 
 
 ```strings /juice-shop/data/juiceshop.sqlite | grep -C 5 "admin@juice-sh.op"```
