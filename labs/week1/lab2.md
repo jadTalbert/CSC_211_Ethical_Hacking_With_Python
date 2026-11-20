@@ -50,7 +50,7 @@ You should review the output from the command and either confirm or reject their
 
 ### Confirmation of Your Findings
 
-To confirm your findings, go to `http://localhost:3000` and login using the administrator credentials(e.g. email address & password). If this works(and it should!), your findings are confirmed!
+To confirm your findings, go to `http://localhost:8080` and login using the administrator credentials(e.g. email address & password). If this works(and it should!), your findings are confirmed!
 
 You should review the example remediation report below and complete this with your detailed findings. This report should be complete and accurate based on your findings. If remediation has not yet been implemented, you should note this in your report and let the enterprise know you will re-evaluate once fixes have been put into place by their development team.
 
