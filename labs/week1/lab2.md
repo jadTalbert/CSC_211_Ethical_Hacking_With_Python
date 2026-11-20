@@ -33,7 +33,7 @@ They ask you to execute the following command using `docker debug`
 
 `vi data/static/users.yml`
 
-<strong style="color:red;">Note:</strong> `vi` (short for VIM) is a Linux text editor, so when you done with your evaluation of the `users.yml` file, type the following in the command line while the file is open:
+<strong style="color:red;">Note:</strong> `vi` (short for VIM) is a Linux text editor, so when you are done with your evaluation of the `users.yml` file, type the following in the command line while the file is open:
 
 `:q!`  This will close the file without writing any accidental changes you may have made.
     
