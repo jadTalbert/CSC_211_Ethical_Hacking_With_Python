@@ -8,7 +8,7 @@
 - Knowledge: [K-02](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
 
 ### Step 1: Installing Python3 & VS Code
-- [Download & Install Python](https://ww.python.org/downloads/) (Windows, Linux & Mac OS)
+- [Download & Install Python](https://www.python.org/downloads/) (Windows, Linux & Mac OS)
 
 - [Download & Install VS Code](https://code.visualstudio.com/download) (Windows, Linux & Mac OS)
 
