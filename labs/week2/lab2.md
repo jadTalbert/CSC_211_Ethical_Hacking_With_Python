@@ -31,7 +31,7 @@ You should document your findings for the vulnerability report based on this sce
 
 
 ### Scenario 2:
-The CSO(Chief Security Officer) has been asking her development team to fix a problem with weak passwords for several months. The team continues to tell her that the problem has been fixed and there is nothing to be concened about. The CSO has reservations due to the team's past track record. So, she comes directly to you and your team in diplomatic tone and asks you to check behind the team to ensure they did not miss anything.
+The CSO(Chief Security Officer) has been asking her development team to fix a problem with weak passwords for several months. The team continues to tell her that the problem has been fixed and there is nothing to be concened about. The CSO has reservations due to the team's past track record. So, she comes directly to you and your team in a diplomatic tone and asks you to check behind the team to ensure they did not miss anything.
 
 The CSO puts you in contact with their lead database administrator(a.k.a. DBA) for him to supply you with any information you need for your intelligence operation.
 
