@@ -19,7 +19,7 @@ One of ACME Corp.'s customers created a support ticket stating the email address
 
 <strong style="color:red;">Note:</strong> Make sure your Juice-Shop docker container is running by executing the `docker ps` command on the command line or terminal.
 
-During your reconnaissance(OSINT) efforts, you test the [Juice-Shop](https://localhost:8080/#/register) web site on your local machine by creating a new user account using the following email address and password combination:
+During your reconnaissance(OSINT) efforts, you test the [Juice-Shop](http://localhost:8080/#/register) web site on your local machine by creating a new user account using the following email address and password combination:
 
 ```
 email address: whiteHatHacker@
