@@ -69,7 +69,7 @@ Ralph claims that yet another vulnerability has been found and this time it's in
 
 After this heated exchange, your team spends a few hours on their investigation and comes back to you with the following statement: `We found this problem two months ago and provided Ralph a vulnerability report and let him know, that immediate remediation was needed. It seems no action was taken!`
 
-To confirm your teams findings, you go the [Juice-Shop](http://localhost:3000/#/login) web site on your local machine and type the following SQL Injection into the email field with a fake password of any length:
+To confirm your teams findings, you go the [Juice-Shop](http://localhost:8080/#/login) web site on your local machine and type the following SQL Injection into the email field with a fake password of any length:
 
 `
 ' OR 1=1--
