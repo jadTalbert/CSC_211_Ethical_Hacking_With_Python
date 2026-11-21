@@ -76,7 +76,7 @@ if __name__ == "__main__":
     scan_target(target, COMMON_PORTS)
 ```
 
-You realize the in order to comment the code, you have to be able to execute it to understand what it's doing. So, you use VS Code to launch the `victim-server` docker container, so that you can copy/paste the code into a new file named `tcp_scanner.py` and execute it. Fortunately, you kept good notes from previous your vulnerability scans and you realize that you should use this reference to launch the `victim-server` docker container:
+You realize the in order to comment the code, you have to be able to execute it to understand what it's doing. So, you use VS Code to launch the `victim-server` docker container using the Dev Containers extension, so that you can copy/paste the code into a new file named `tcp_scanner.py` and execute it. Fortunately, you kept good notes from previous vulnerability scans and you realize that you should use this reference to launch the `victim-server` docker container:
 
 
 ![launch docker container extension](./images/docker_container_extension.jpg)
