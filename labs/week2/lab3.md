@@ -26,7 +26,7 @@ You should check to make sure docker is running on your local machine using the 
 import requests
 
 # This code is a simple example of a SQL injection attack on a login endpoint. It sends a POST request to the login URL with a payload that attempts to bypass authentication by injecting SQL code into the email field.
-url = "http://localhost:3000/rest/user/login"
+url = "http://localhost:8080/rest/user/login"
 
 # The payload is a dictionary containing the email and password fields. The email field contains a SQL injection string that will always evaluate to true, allowing the attacker to bypass authentication.
 payload = {
