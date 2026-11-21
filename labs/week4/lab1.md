@@ -16,7 +16,7 @@
 The CSO continually brags to the CTO about your teams abilities and how well you are performing the vulnerability assessments for ACME Corp. She knows that there are minor information vulnerabilities in terms of their Linux Operating Systems---specifically information displayed on banners when someone logs into a server. She makes the following statement to your team and wants you to perform another round of scans checking for banners.
 
 ```
-Service banners themselves do not execute exploits, but in your ethical hacking efforts and penetration testing, they represent a significant information disclosure vulnerability (specifically categorized under CWE-200: Exposure of Sensitive Information). I need you to scan for banners an provide me the information your find in an report.
+Service banners themselves do not execute exploits, but in your ethical hacking efforts and penetration testing, they represent a significant information disclosure vulnerability (specifically categorized under CWE-200: Exposure of Sensitive Information). I need you to scan for banners and provide me the information you find in an vulnerability report.
 
 ```
 
