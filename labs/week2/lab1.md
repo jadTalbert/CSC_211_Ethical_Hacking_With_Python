@@ -44,7 +44,7 @@ Another teammate found a similar problem in the same vein using HTML in the sear
 </form>
 ```
 
-As your testing the search feature with the second vulnerability above, Ralph stops by and asks what you are doing, because their team noticed a lot of odd entries in the web server logs around a form named `process.php`. Their web site uses Angular and NOT PHP, so he's curious how this is happening because these requests are filling up their log files and reducing valuable disk space on their servers.
+As your testing the search feature with the second vulnerability above, Ralph stops by and asks what you are doing, because their team noticed a lot of odd entries in the web server logs around a PHP program named `process.php`. Their web site uses Angular and NOT PHP, so he's curious how this is happening because these requests are filling up their log files and reducing valuable disk space on their servers.
 
 You launch your command line or terminal using `docker debug juice-shop` and type in the following command to watch the log files in real time:
 
