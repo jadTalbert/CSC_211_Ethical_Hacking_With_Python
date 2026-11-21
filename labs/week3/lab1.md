@@ -43,10 +43,11 @@ Since the docker containers have been pre-designed for you by an outside firm, t
 An initial start-up that shows an error may require running another command to remove orphaned containers:
 
 ```
-[+] up 2/3
+[+] up 3/3
  ✔ Network docker_files_recon-net Created                                                                                                    
  ✔ Container student-recon        Started                                                                                                  
- ⠹ Container acme-dns             Starting                                                                                                    
+ ✔ Container acme-dns             Starting
+                                                                                                    
 Error response from daemon: failed to set up container networking: Address already in use
 ```
 
