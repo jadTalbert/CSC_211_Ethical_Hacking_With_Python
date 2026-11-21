@@ -8,7 +8,7 @@
 - Knowledge: [K-02,K-03,K-05,K-08,K-10,K0674,K0680,K0682,K0683,K0797,K0813,K0833,K0882,K0924,](https://github.com/jadTalbert/NICE_Framework/blob/main/NICE_Framework/knowledge/knowledge.md)
 
 ### Context
-The CSO is putting you under a bit more pressure to get things done faster, and after learning how to ping servers using Python in the previous hacking exercise, you're feeling a bit more confident in your White-Hat Hacking abilities. You have learned through past conversations with other colleagures, that port scanning is an important aspect of Ethical Hacking and you move on to scanning TCP Ports on these same docker containers(e.g. the `student-recon` docker container).
+The CSO is putting you under a bit more pressure to get things done faster, and after learning how to ping servers using Python in the previous hacking exercise, you're feeling a bit more confident in your White-Hat Hacking abilities. You have learned through past conversations with other colleagues, that port scanning is an important aspect of Ethical Hacking and you move on to scanning TCP Ports on these same docker containers(e.g. the `student-recon` docker container).
 
 
 
