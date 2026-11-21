@@ -22,7 +22,7 @@ One of ACME Corp.'s customers created a support ticket stating the email address
 During your reconnaissance(OSINT) efforts, you test the [Juice-Shop](http://localhost:8080/#/register) web site on your local machine by creating a new user account using the following email address and password combination:
 
 ```
-email address: whiteHatHacker@
+email address: whiteHatHacker@ss
 password: 123456
 ```
 
