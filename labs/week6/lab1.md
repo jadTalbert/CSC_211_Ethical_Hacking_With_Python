@@ -43,7 +43,7 @@ f7ee1dce34dc   bkimminich/juice-shop:v14.5.1   "/nodejs/bin/node /j…"   10 sec
 
 After doing some research, you realize how simple it can be to generate QR codes, so you write the python program listed below to get things moving quickly.
 
-However, you realize that if you want to scan a QR code on an external device such as your phone, you need to obtain your internal IP address. So, you execute the following in the VS Code terminal and use the internal IP address in your python program:
+However, you realize that if you want to scan a QR code on an external device such as your phone, you need to obtain your internal IPv 4 address. So, you execute the following in the VS Code terminal and use the internal IPv 4 address in your python program:
 
 #### Mac/Linux
 ```bash
