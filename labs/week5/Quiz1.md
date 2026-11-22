@@ -11,7 +11,7 @@ docker compose -f docker_files/docker-compose.yml down --remove-orphans
 ### Task 1: Performing Docker Basics
 - You should start the docker containers in the `week 5` directory using the VS Code terminal.
 - You should list the running docker containers using the command line in VS Code.
-- You should launch the `juice-shop` web site on your local machine using the correct port in the URL.
+- You should launch the `juice-shop` web site on your local machine using the correct port in the URL. Hint: Inspect the docker-compose.yml file.
 - You should record a 1-2 minute video showing me that you can accomplish these tasks and upload your video to Canvas.
 
 ### Task 2: Perform a Reconnaissance Mission
