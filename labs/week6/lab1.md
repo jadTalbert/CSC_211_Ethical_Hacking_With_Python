@@ -26,6 +26,8 @@ docker compose -f docker_files/docker-compose.yml down --remove-orphans
 and
 
 ```bash
+docker network prune
+
 docker compose --project-directory docker_files/ -f docker_files/docker-compose.yml up -d --force-recreate
 ```
 
