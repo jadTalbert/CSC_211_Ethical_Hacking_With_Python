@@ -1,0 +1,33 @@
+Jun 14 15:16:01 combo sshd(pam_unix)[19939]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=218.188.2.4
+Jun 14 15:16:02 combo sshd(pam_unix)[19937]: check pass; user unknown
+Jun 14 15:16:02 combo sshd(pam_unix)[19937]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh ruser= rhost=218.188.2.4
+Jun 14 15:18:14 combo xinetd[2601]: START: ftp pid=19942 from=218.188.2.4
+Jun 14 15:18:15 combo vsftpd(pam_unix)[19942]: authentication failure; logname= uid=0 euid=0 tty= rhost=218.188.2.4
+Jun 14 15:18:17 combo xinetd[2601]: EXIT: ftp pid=19942 duration=3(sec)
+Jun 14 16:02:11 combo su(pam_unix)[20104]: session opened for user cyrus by (uid=0)
+Jun 14 16:02:12 combo su(pam_unix)[20104]: session closed for user cyrus
+Jun 15 02:12:41 combo sshd(pam_unix)[20411]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh rhost=198.51.100.23 user=root
+Jun 15 02:12:44 combo sshd(pam_unix)[20413]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh rhost=198.51.100.23 user=root
+Jun 15 02:12:47 combo sshd(pam_unix)[20415]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh rhost=198.51.100.23 user=admin
+Jun 15 02:12:50 combo sshd(pam_unix)[20417]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh rhost=198.51.100.23 user=guest
+Jun 15 04:02:20 combo logrotate: ALERT exited abnormally with [1]
+Jun 15 09:44:10 combo ftpd[20510]: connection from 203.0.113.45 () at Mon Jun 15 09:44:10 2026
+Jun 15 09:44:12 combo ftpd[20510]: User unknown timed out after 300 seconds at Mon Jun 15 09:49:12 2026
+Jun 16 04:02:19 combo logrotate: ALERT exited abnormally with [1]
+Jun 16 11:20:05 combo sshd(pam_unix)[21011]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh rhost=203.0.113.88 user=ralph
+Jun 16 11:20:09 combo sshd(pam_unix)[21013]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh rhost=203.0.113.88 user=ralph
+Jun 16 14:05:33 combo httpd[21190]: [error] [client 192.0.2.14] File does not exist: /var/www/html/process.php
+Jun 17 01:15:02 combo crond(pam_unix)[21402]: session opened for user root by (uid=0)
+Jun 17 01:15:03 combo crond(pam_unix)[21402]: session closed for user root
+Jun 17 04:02:21 combo logrotate: ALERT exited abnormally with [1]
+Jun 17 04:02:22 combo logrotate: ALERT exited abnormally with [1]
+Jun 17 18:33:49 combo vsftpd(pam_unix)[21801]: authentication failure; logname= uid=0 euid=0 tty= rhost=198.51.100.77 user=deploy
+Jun 17 18:33:52 combo vsftpd(pam_unix)[21803]: authentication failure; logname= uid=0 euid=0 tty= rhost=198.51.100.77 user=backup
+Jun 17 18:33:55 combo vsftpd(pam_unix)[21805]: authentication failure; logname= uid=0 euid=0 tty= rhost=198.51.100.77 user=oracle
+Jun 18 03:41:10 combo sshd(pam_unix)[22101]: check pass; user unknown
+Jun 18 03:41:10 combo sshd(pam_unix)[22101]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh rhost=218.188.2.4
+Jun 18 03:41:13 combo sshd(pam_unix)[22103]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh rhost=218.188.2.4 user=root
+Jun 18 03:41:16 combo sshd(pam_unix)[22105]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh rhost=218.188.2.4 user=test
+Jun 18 03:41:19 combo sshd(pam_unix)[22107]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh rhost=218.188.2.4 user=ubuntu
+Jun 18 03:41:22 combo sshd(pam_unix)[22109]: authentication failure; logname= uid=0 euid=0 tty=NODEVssh rhost=218.188.2.4 user=postgres
+Jun 18 04:02:18 combo logrotate: ALERT exited abnormally with [1]
