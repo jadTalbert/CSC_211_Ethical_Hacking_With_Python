@@ -2,6 +2,11 @@
 
 ### Context:
 This is your first quiz. It is a hands on test based on key topics that you have covered up to this point. This is an open/notes quiz, so you may use previous labs that you have completed to assist you. You have until the specified deadline noted in Canvas to have this completed.
+NOTE: Before you begin, you should cd into the CSC_211_Ethical_Hacking_With_Python directory that you have already cloned to your computer. Then, you should execute the following commands:
+
+cd labs/week5
+
+docker compose -f docker_files/docker-compose.yml down --remove-orphans
 
 ### Task 1: Performing Docker Basics
 - You should start the docker containers in the `week 5` directory using the VS Code terminal.
@@ -18,7 +23,7 @@ This is your first quiz. It is a hands on test based on key topics that you have
 
 
 ### Task 3: Executing Commands on a Docker Container
-- You should use the VS Code extension `Dev Containers` and connect to the running `redis-cache-server` docker container and execute the following command on the VS Code terminal: `redis-cli`. 
+- You should use the VS Code extension `Dev Containers` and connect to the running `redis-cache-server` docker container. 
 - You should remain on the `redis-cache-server` container in VS Code and execute the following command: `redis-cli CONFIG GET *`. You should find the `dir` key in the list of data returned and its associated value and note this for the video.
 - Once you are satisfied with your results, you can exit the `redis-cache-server` VS Code instance at this point.
 - You should execute the proper command in VS Code terminal to shutdown all Docker containers that are currently running.
